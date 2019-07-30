@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en"  xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+<div class="container">
+
+    <h3 class="header">Tourist List</h3>
+
+    <div class="card">
+        <div class="card-body">
+            <a href="/addTourist" class="btn btn-primary">Add tourist</a>
+            <a href="/addFlight" class="btn btn-primary">Add flight</a>
+            <a href="/flightList" class="btn btn-primary">Flight List</a>
+        </div>
+
+    </div>
+
+    <div class="card mt-4">
+        <div class="card-body">
+
+            <table class="table table-hover">
+                <tr>
+                    <th>Tourist ID</th>
+                    <th>First name</th>
+                    <th>Last name</th>
+                    <th>Date of birth</th>
+                    <th>Gender</th>
+                    <th>Country</th>
+                    <th>Remarks</th>
+                    <th>Flights</th>
+                    <th style="width: 15%">Actions</th>
+                </tr>
+                <tr th:each="tourist: ${tourists}">
+                    <td th:text="${tourist.id}"></td>
+                    <td th:text="${tourist.firstName}"></td>
+                    <td th:text="${tourist.lastName}"></td>
+                    <td th:text="${tourist.dateOfBirth}"></td>
+                    <td th:text="${tourist.gender}"></td>
+                    <td th:text="${tourist.country}"></td>
+                    <td th:text="${tourist.remarks}"></td>
+
+                    <td th:text="${tourist.flightList}"></td>
+                    <td>
+                        <a href="/addTourist" th:href="@{|/editTourist/${tourist.id}|}"class="btn btn-success">Edit</a>
+                        <a href="#" th:href="@{|/deleteTourist/${tourist.id}|}"class="btn btn-danger">Delete</a>
+
+                    </td>
+                </tr>
+
+            </table>
+
+        </div>
+    </div>
+
+</div>
+</body>
+</html>

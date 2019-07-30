@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org" >
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+</head>
+<body>
+
+<div align="center">
+    <form th:action="@{/addTourist}" th:object="${tourist}" method="post">
+        <div class="container">
+
+            <h2 class="header">Add tourist</h2>
+
+            <div class="card">
+                <div class="card-body">
+
+                    <div class="form-group">
+                        <p>First Name: <input type="text" th:field="*{firstName}" placeholder="name" class="form-controll" /></p>
+                    </div>
+
+                    <div class="form-group">
+                        <p>Last Name: <input type="text" th:field="*{lastName}" placeholder="last name" class="form-controll" /></p>
+                    </div>
+
+                    <div class="form-group">
+                        <p>Date of birth <input type="date" th:field="*{dateOfBirth}" placeholder = "date of birth"  class="form-controll" /></p>
+                    </div>
+
+
+
+                    <div class="form-group">
+                        <p>Gender <input type="text" th:field="*{gender}" placeholder = "male/female"  class="form-controll"/></p>
+                    </div>
+
+                    <div class="form-group">
+                        <p>Country <input type="text" th:field="*{country}" placeholder = "country"  class="form-controll" /></p>
+                    </div>
+
+                    <div class="form-group">
+                        <p>Remarks <input type="text" th:field="*{remarks}" placeholder = "remarks"  class="form-controll" /></p>
+                    </div>
+                                        <div class="form-group">
+                                            <label  class="form-controll">Flight List
+                                                <select th:field="*{flightList}">
+                                                    <option th:each="flight : ${flights}"
+                                                            th:value="${flight.id}"
+                                                            th:text="${flight.name}">
+                                                    </option>
+                                                </select>
+                                            </label>
+                                        </div>
+
+
+                    <input type="submit" value="Save" class="btn btn-primary">
+
+                </div>
+            </div>
+
+        </div>
+    </form>
+</div>
+
+</body>
+</html>
+
+
+
